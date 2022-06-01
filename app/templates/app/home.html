@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block banner %}
+
+
+<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 fst-italic">Don’t let beautiful memories fade</h1>
+
+    <p class="lead my-3"> Create your own travel journal in our free software for web. Create an account and start
+      today!</p>
+
+    {% if request.user.is_authenticated %} 
+    <p class="lead mb-0">
+      <a href="{% url 'dashboard' %}" class="text-white fw-bold"><button class="btn btn-outline-success me-2"
+          type="button"><h6 class="display-6"> Dashboard ></h6></button></a>
+    </p>
+    {% else %}
+    <p class="lead mb-0">
+      <a href="{% url 'login' %}" class="text-white fw-bold"><button class="btn btn-outline-danger me-2"
+          type="button"> Start your own diary now ></button></a>
+    </p>
+    {% endif %}
+
+
+  </div>
+
+</div>
+
+{% endblock banner %}
+
+
+{% block content %}
+
+<div class="container text-center">
+  <div><h2 class="display-2"><i>Our Top Diaries.</i></h2></div>
+</div>
+<hr class="featurette-divider">
+
+<div class="container-feed">
+  <div class="album py-4 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for x in diary %}
+        <div class="col ">
+          <div class="card shadow" style="width: 18rem;">
+            <img src="{{x.diary_image.url}}" class="card-img-top" alt="..." height="200x200">
+            <div class="card-body">
+              <h5 class="card-title">{{x.title}}</h5>
+              <p class="card-text">Hello</p>
+              <a href="{% url 'diary-detail' x.id %}" class="btn btn-primary">View</a>
+              {% if request.user == x.user %}
+              <small><a href="{% url 'diary-detail' x.id %}" class="btn btn-secondary">Edit</a></small>
+              <small><a href="{% url 'delete' x.id %}" class="btn btn-danger">Delete</a></small>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+  </div>
+  <div class="col-md-5">
+    <img src="{% static 'app/images/banner/b2.jpg' %}" class="d-block w-100" alt="..." width="500" height="500">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+    </svg>
+
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout
+      would work with some actual real-world content in place.</p>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <img src="{% static 'app/images/banner/x.jpg' %}" alt="" width="500" height="500"
+      role="img" aria-label="Placeholder: 500x500"
+      preserveAspectRatio="xMidYMid slice" focusable="false">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+    </svg>
+
+  </div>
+</div>
+
+<hr class="featurette-divider">
+<div class="text-center"><h3 class="display-3">Our Top Profiles</h3></div>
+<hr class="featurette-divider">
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2">
+    {% for i in profile %}
+    <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+        
+        <a href="{% url 'profiles' i.id  %}"><button class="btn btn-outline-danger me-2"
+          type="button">{{i.user.username}}</button></a>
+        <p class="card-text text-center">Country : {{i.country | upper}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr class="featurette-divider">
+
+<!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
+
+
+<!-- FOOTER -->
+<footer class="container">
+  <p class="float-end"><a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Back to top</a></p>
+  <p>© 2017–2021 Company, Inc. · <a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Privacy</a> · <a
+      href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Terms</a></p>
+</footer>
+</main>
+
+
+<script src="./ssss_files/bootstrap.bundle.min.js.download"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+{% endblock content %}

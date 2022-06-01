@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+
+<div>
+    <a href="{{request.META.HTTP_REFERER}}"><button type="button" class="btn btn-outline-primary">Go Back</button></a>
+</div>
+
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 3fr 2fr ;
+    }
+</style>
+<div class="text-center">
+    <h1 class="display-1">
+        <i>{{profile.first_name | upper}} {{profile.last_name | upper}}</i>
+        <hr>
+    </h1>
+</div>
+
+<div class="container">
+    <div>
+        <div>
+            <h1> Profile </h1>
+            <hr class="featurette-divider">
+            <strong>
+                <h5 class="display-5">Username : <strong><i>@{{diary.user.username}}</i></strong></h5>
+                <h5>Firstname : <strong><i> {{profile.first_name | upper}}</i></strong></h5>
+                <h5>Lastname : <strong><i> {{profile.last_name | upper}}</i></strong></h5>
+                <h5>Country : <strong><i> {{profile.country | upper}}</i></strong></h5>
+                <h5>Restaurant Visited : <strong><i> {{restaurant.name}}</i></strong></h5>
+                <h5>Restaurant Ratings : <strong><i> {{restaurant.rating}}</i></strong></h5>
+            </strong>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h1>Diaries Lists.</h1>
+            <hr class="featurette-divider">
+            <h5>Diary Title : <a href="{% url 'dashboard' %}"><strong><i> {{diary.title}}</i></strong></a></h5>
+            <hr class="featurette-divider">
+            <div>
+                <h3>Chapters Lists</h3>
+                <hr class="featurette-divider">
+                <h5>Chapters : <strong><i> {{chapter.user.id}}</i></strong></h5>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+{% endblock content %}

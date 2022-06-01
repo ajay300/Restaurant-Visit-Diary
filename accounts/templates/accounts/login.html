@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+<form action="" method="POST" novalidate class="shadow p-4">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="email" class="form-control" name="email" placeholder="email"><br>
+        <input type="password" class="form-control" name="password" id="password"
+            placeholder="Enter your password">
+        <small class="text-danger"></small> <br>
+    </div>
+    <small class="col-form-label"><a href="{% url 'passwordchange' %}">Forget Password?</a></small>
+    <input type="submit" class="btn btn-primary" value="Login">
+    <br>
+    <div class="text-center text-primary fw-bold"><small>Don't Have an Account?</small></br><a href="{% url 'register' %}">Sign up</a></small></div>
+    
+   </form>
+
+{% endblock content %}

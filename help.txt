@@ -1,0 +1,30 @@
+                                    Resturant Diary
+                                            |
+                                           User
+                                            |
+                                          Login
+                                            |
+                                      Profile fillup
+                                            |
+                                        Create Diary
+                                            |      
+                                (n) no of (chapters) can be add
+                                            |
+                            Each Chapters stores 1 Resturant Pages
+                                            |
+                          any user can do comments on restaurant page
+
+
+==> Email and password for Django project Login
+    Super user :
+        email : thinkeasy@gmail.com
+        password : thinkeasy
+        username : thinkeasy
+
+
+==>  First Please add restaurant Details then You can view your details which is posted!
+
+Thank you
+
+
+

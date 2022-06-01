@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Chapter{% endblock title %}
+
+{% block content %}
+
+<div>
+  <a href="{{request.META.HTTP_REFERER}}"><button type="button" class="btn btn-outline-primary">Go Back</button></a>
+</div>
+
+<style>
+  .container-feed {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
+</style>
+
+
+<div class="container text-center">
+  <h1>Chapter</h1>
+</div>
+<hr>
+
+
+<div class="container-feed">
+  {% if request.user.is_authenticated %}
+  <div class="card sm-2" style="width: 18rem;">
+    <div class="card-body ">
+      <h5 class="card-title">New Chapter</h5>
+      <a href="{% url 'add-chapter'  %}" class="btn btn-primary">Add Chapter</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="col-sm-4">
+      {% for x in chapter %}
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> CHAPTER : {{x.title | upper}}</h5>
+          <p class="card-text"></p>
+          <div class="btn-group">
+            <a href="{% url 'resto-detail' x.id %}"><button type="button" class="btn btn-sm btn-outline-primary">Rest View</button></a>
+            {% if request.user == x.user %}
+            
+            <a href="{% url 'delete-chapter' x.id %}"><button type="button" class="btn btn-sm btn-outline-danger">delete</button></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+<a href="{% url 'resto-form' x.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">Add Rest</button></a>

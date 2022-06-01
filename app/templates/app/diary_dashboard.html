@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+<div>
+  <a href="{{request.META.HTTP_REFERER}}"><button type="button" class="btn btn-outline-primary">Go Back</button></a>
+</div>
+
+<div class="container-feed">
+  <div class="album py-4 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        <div class="col">
+          <div class="card shadow" style="width: 18rem;">
+            <a href="{% url 'add-diary'  %}"><img src="{% static 'app/images/add.png/' %}" class="card-img-top" alt="..." height="180x180"></a>
+            <div class="card-body">
+              <h5 class="card-title">Add diary</h5>
+              <p class="card-text">Hello</p>
+              <a href="{% url 'add-diary' %}" class="btn btn-primary">Add New Diary</a>
+            </div>
+          </div>
+        </div>
+
+        {% for x in diary %}
+        <div class="col">
+          <div class="card shadow" style="width: 18rem;">
+            <img src="{{x.diary_image.url}}" class="card-img-top" alt="..." height="180x180">
+            <div class="card-body">
+              <h5 class="card-title">{{x.title}}</h5>
+              <p class="card-text">Hello</p>
+              <a href="{% url 'diary-detail' x.id %}" class="btn btn-primary">View</a>
+              <small><a href="{% url 'diary-detail' x.id %}" class="btn btn-secondary">Edit</a></small>
+              <small><a href="{% url 'delete' x.id %}" class="btn btn-danger">Delete</a></small>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
