@@ -8,7 +8,7 @@
 </div>
 
 
-{% if request.user != data.user.username %}
+
 <form action="" method="POST" novalidate class="shadow p-4">
     {% csrf_token %}
     {% for f in form %}
@@ -26,6 +26,6 @@
     {% endfor %}
     {% endif %}
 </form>
-{% endif %}
+
 
 {% endblock content %}
