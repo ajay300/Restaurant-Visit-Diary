@@ -1,1 +1,1 @@
-web: gunicorn ThinkEasy.wsgi
+web: gunicorn ThinkEasy.wsgi.application
